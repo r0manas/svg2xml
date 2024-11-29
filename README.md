@@ -1,5 +1,7 @@
-# svg2xml
-Convert SVG icons to android Drawable Vector
+# SVG to XML Converter
+This project provides a simple script to convert SVG files to Android vector drawable XML format.
+## Installation
+To use this script, you need to have Python installed on your machine. You can download Python from [python.org](https://www.python.org/downloads/). 
 ## Usage
 To convert an SVG file to an Android vector drawable XML, run the following command in PowerShell:
 
