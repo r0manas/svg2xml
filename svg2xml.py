@@ -37,4 +37,25 @@ def convert_and_adjust_svg(svg_path, output_path, new_height, new_width, new_vie
     print(f"Icon adjusted and saved as '{output_path}'")
 
 def scale_path_data(path_data, factor):
-    # ... (rest of the code remains the same)
+    def scale_coordinate(match):
+        value = float(match.group())
+        return str(value * factor)
+
+    # Scale all numbers in the pathData
+    scaled_data = re.sub(r'-?\d+(\.\d+)?', scale_coordinate, path_data)
+    return scaled_data
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python svg2xml.py <input_svg_path>")
+        sys.exit(1)
+
+    svg_path = sys.argv[1]
+    base_name = os.path.splitext(svg_path)[0]
+    output_path = f"{base_name}.xml"
+    new_height = 108
+    new_width = 108
+    new_viewport_width = 1024.0
+    new_viewport_height = 1024.0
+
+    convert_and_adjust_svg(svg_path, output_path, new_height, new_width, new_viewport_width, new_viewport_height)
